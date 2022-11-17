@@ -1,11 +1,16 @@
-﻿namespace Planetakuna;
+﻿using Planetakuna.Models;
+using Planetakuna.Services;
+
+namespace Planetakuna;
 
 public partial class App : Application
 {
-	public App()
-	{
-		InitializeComponent();
+    public static IPlanetService PlanetService { get; } = new PlanetService(new PlanetRepository());
 
-		MainPage = new PlanetsLookoutPage();
-	}
+    public App()
+    {
+        InitializeComponent();
+
+        MainPage = new NavigationPage(new PlanetsLookoutPage());
+    }
 }
