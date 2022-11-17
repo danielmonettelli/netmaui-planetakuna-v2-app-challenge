@@ -109,6 +109,7 @@
         TargetType="Label">
         <Setter Property="FontFamily" Value="Kanit#300" />
         <Setter Property="FontSize" Value="10" />
+        <Setter Property="TextTransform" Value="Uppercase" />
         <Setter Property="TextColor" Value="{StaticResource col_cuat}" />
     </Style>
     <!--#endregion-->
