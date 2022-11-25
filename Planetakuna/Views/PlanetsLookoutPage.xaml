@@ -17,8 +17,10 @@
         <Grid Grid.Row="0">
             <Image
                 Grid.Column="0"
+                HeightRequest="25"
                 HorizontalOptions="Start"
-                Source="{StaticResource icon_sun}" />
+                Source="{StaticResource icon_sun}"
+                WidthRequest="25" />
 
             <Label
                 Grid.Column="1"
@@ -32,9 +34,10 @@
             <Label
                 Style="{StaticResource TxtHeadline3_1}"
                 Text="{Binding Planets[0].Name_Planet}" />
+
             <Label
                 Style="{StaticResource TxtTitle1_1}"
-                Text="The Red Planet" />
+                Text="{Binding Planets[0].Short_Description_Planet}" />
         </VerticalStackLayout>
 
         <CarouselView
@@ -46,7 +49,7 @@
                     <Grid ColumnDefinitions="25*, 50*, 25*">
                         <Image
                             Grid.Column="1"
-                            Source="{Binding Image_Planet}" />
+                            Source="{Binding Image_Planet, Converter={StaticResource CustomImageUrlScalingConverter}}" />
                     </Grid>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
@@ -70,109 +73,37 @@
             HorizontalScrollBarVisibility="Never"
             Orientation="Horizontal">
             <HorizontalStackLayout
+                BindableLayout.ItemsSource="{Binding Planets[0].Features}"
                 HeightRequest="60"
                 Spacing="16">
-                <Border
-                    Padding="16,10"
-                    BackgroundColor="Transparent"
-                    Stroke="{StaticResource col_ter}"
-                    StrokeShape="RoundRectangle 3,3,3,3"
-                    StrokeThickness="1">
-                    <HorizontalStackLayout Spacing="14">
-                        <Image Source="{StaticResource icon_temperature}" />
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="model:Feature">
+                        <Border
+                            Padding="16,10"
+                            BackgroundColor="Transparent"
+                            Stroke="{StaticResource col_ter}"
+                            StrokeShape="RoundRectangle 3,3,3,3"
+                            StrokeThickness="1">
+                            <HorizontalStackLayout Spacing="14">
+                                <Label
+                                    FontFamily="CustomFontIcons"
+                                    FontSize="{Binding Size_Feature}"
+                                    Text="{Binding Unicode_Feature, Converter={StaticResource StringToUnicodeConverter}}"
+                                    TextColor="{StaticResource col_prim}"
+                                    VerticalTextAlignment="Center" />
 
-                        <VerticalStackLayout>
-                            <Label
-                                Style="{StaticResource TxtOverline_1}"
-                                Text="Temperature" />
-                            <Label
-                                Style="{StaticResource TxtHeadline6_1}"
-                                Text="{Binding Planets[0].Temperature_Planet, StringFormat='{0} °c'}" />
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-
-                <Border
-                    Padding="16,10"
-                    BackgroundColor="Transparent"
-                    Stroke="{StaticResource col_ter}"
-                    StrokeShape="RoundRectangle 3,3,3,3"
-                    StrokeThickness="1">
-                    <HorizontalStackLayout Spacing="14">
-                        <Image Source="{StaticResource icon_speedometer}" />
-
-                        <VerticalStackLayout>
-                            <Label
-                                Style="{StaticResource TxtOverline_1}"
-                                Text="Average Orbital Speed" />
-                            <Label
-                                Style="{StaticResource TxtHeadline6_1}"
-                                Text="{Binding Planets[0].Average_Orbital_Speed_Planet, StringFormat='{0} km/s'}" />
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-
-                <Border
-                    Padding="16,10"
-                    BackgroundColor="Transparent"
-                    Stroke="{StaticResource col_ter}"
-                    StrokeShape="RoundRectangle 3,3,3,3"
-                    StrokeThickness="1">
-                    <HorizontalStackLayout Spacing="14">
-                        <Image Source="{StaticResource icon_satellite}" />
-
-                        <VerticalStackLayout>
-                            <Label
-                                Style="{StaticResource TxtOverline_1}"
-                                Text="Satellites" />
-                            <Label
-                                Style="{StaticResource TxtHeadline6_1}"
-                                Text="{Binding Planets[0].Satellites_Planet}" />
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-
-                <Border
-                    Padding="16,10"
-                    BackgroundColor="Transparent"
-                    Stroke="{StaticResource col_ter}"
-                    StrokeShape="RoundRectangle 3,3,3,3"
-                    StrokeThickness="1">
-                    <HorizontalStackLayout Spacing="14">
-                        <Image Source="{StaticResource icon_compass}" />
-
-                        <VerticalStackLayout>
-                            <Label
-                                Style="{StaticResource TxtOverline_1}"
-                                Text="Surface area" />
-
-                            <Label
-                                Style="{StaticResource TxtHeadline6_1}"
-                                Text="{Binding Planets[0].Surface_Area_Planet, StringFormat='{0} km2'}" />
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-
-                <Border
-                    Padding="16,10"
-                    BackgroundColor="Transparent"
-                    Stroke="{StaticResource col_ter}"
-                    StrokeShape="RoundRectangle 3,3,3,3"
-                    StrokeThickness="1">
-                    <HorizontalStackLayout Spacing="14">
-                        <Image Source="{StaticResource icon_rotation}" />
-
-                        <VerticalStackLayout>
-                            <Label
-                                Style="{StaticResource TxtOverline_1}"
-                                Text="Rotation period" />
-
-                            <Label
-                                Style="{StaticResource TxtHeadline6_1}"
-                                Text="{Binding Planets[0].Rotation_Period_Planet, StringFormat='{0:N4} d'}" />
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
+                                <VerticalStackLayout>
+                                    <Label
+                                        Style="{StaticResource TxtOverline_1}"
+                                        Text="{Binding Name_Feature}" />
+                                    <Label
+                                        Style="{StaticResource TxtHeadline6_1}"
+                                        Text="{Binding Value_Feature}" />
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
             </HorizontalStackLayout>
         </ScrollView>
 
@@ -182,7 +113,9 @@
             ColumnDefinitions="Auto, *, Auto">
             <Image
                 Grid.Column="0"
-                Source="{StaticResource icon_left_arrow}" />
+                HeightRequest="19"
+                Source="{StaticResource icon_left_arrow}"
+                WidthRequest="19" />
 
             <HorizontalStackLayout
                 Grid.Column="2"
@@ -190,7 +123,10 @@
                 <Label
                     Style="{StaticResource TxtSubtitle1_1}"
                     Text="Explore" />
-                <Image Source="{StaticResource icon_explore}" />
+                <Image
+                    HeightRequest="24"
+                    Source="{StaticResource icon_explore}"
+                    WidthRequest="24" />
             </HorizontalStackLayout>
         </Grid>
     </Grid>

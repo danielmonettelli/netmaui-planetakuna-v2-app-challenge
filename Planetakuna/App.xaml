@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Resources/Styles/Labels.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Icons.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Bases.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Converters.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -7,13 +7,6 @@
 
     <!--#region FontImageSource INTERFACES-->
     <FontImageSource
-        x:Key="icon_compass"
-        FontFamily="CustomFontIcons"
-        Glyph="{x:Static FontIcons:CustomFontIcons.Icon_compass}"
-        Size="27"
-        Color="{StaticResource col_prim}" />
-
-    <FontImageSource
         x:Key="icon_explore"
         FontFamily="CustomFontIcons"
         Glyph="{x:Static FontIcons:CustomFontIcons.Icon_explore}"
@@ -28,38 +21,10 @@
         Color="{StaticResource col_prim}" />
 
     <FontImageSource
-        x:Key="icon_rotation"
-        FontFamily="CustomFontIcons"
-        Glyph="{x:Static FontIcons:CustomFontIcons.Icon_rotation}"
-        Size="30"
-        Color="{StaticResource col_prim}" />
-
-    <FontImageSource
-        x:Key="icon_satellite"
-        FontFamily="CustomFontIcons"
-        Glyph="{x:Static FontIcons:CustomFontIcons.Icon_satellite}"
-        Size="27"
-        Color="{StaticResource col_prim}" />
-
-    <FontImageSource
-        x:Key="icon_speedometer"
-        FontFamily="CustomFontIcons"
-        Glyph="{x:Static FontIcons:CustomFontIcons.Icon_speedometer}"
-        Size="27"
-        Color="{StaticResource col_prim}" />
-
-    <FontImageSource
         x:Key="icon_sun"
         FontFamily="CustomFontIcons"
         Glyph="{x:Static FontIcons:CustomFontIcons.Icon_sun}"
         Size="25"
-        Color="{StaticResource col_prim}" />
-
-    <FontImageSource
-        x:Key="icon_temperature"
-        FontFamily="CustomFontIcons"
-        Glyph="{x:Static FontIcons:CustomFontIcons.Icon_temperature}"
-        Size="26"
         Color="{StaticResource col_prim}" />
     <!--#endregion-->
 

@@ -6,7 +6,7 @@ namespace Planetakuna.Models
     {
         private readonly HttpClient _httpClient;
 
-        static readonly string BaseAddress = "https://apimocha.com/apiplanetakuna";
+        static readonly string BaseAddress = "https://apimocha.com/planetakuna";
         static readonly string UrlPlanets = $"{BaseAddress}/planets";
 
         public PlanetRepository()
@@ -25,5 +25,6 @@ namespace Planetakuna.Models
             }
             return null;
         }
+
     }
 }

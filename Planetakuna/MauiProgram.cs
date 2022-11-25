@@ -12,6 +12,9 @@ public static class MauiProgram
             fonts.AddFont("customfonticons.ttf", "CustomFontIcons");
             fonts.AddFont("Kanit-Light.ttf", "Kanit#300");
         }).UseMauiCommunityToolkit();
+
+        builder.Services.AddSingleton<PlanetsLookoutPage>();
+
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
