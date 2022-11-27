@@ -4,10 +4,11 @@ namespace Planetakuna;
 
 public partial class PlanetsLookoutPage : ContentPage
 {
-	public PlanetsLookoutPage()
-	{
-		InitializeComponent();
+    public PlanetsLookoutPage()
+    {
+        InitializeComponent();
 
-		BindingContext = ViewModelLocator.PlanetsLookoutViewModel;
-	}
+        BindingContext = ViewModelLocator.PlanetsLookoutViewModel;
+    }
+
 }

@@ -6,6 +6,7 @@
     xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:model="clr-namespace:Planetakuna.Models"
     xmlns:viewModel="clr-namespace:Planetakuna.ViewModels"
+    x:Name="parentPage"
     x:DataType="viewModel:PlanetsLookoutViewModel"
     BackgroundColor="Black"
     NavigationPage.HasNavigationBar="False">
@@ -26,22 +27,24 @@
                 Grid.Column="1"
                 HorizontalOptions="End"
                 Style="{StaticResource TxtSubtitle1_1}"
-                Text="{Binding Planets[0].Id_Planet, StringFormat='.0{0}'}"
+                Text="{Binding MyPlanet.Id_Planet, StringFormat='.0{0}'}"
                 TranslationX="-20" />
         </Grid>
 
         <VerticalStackLayout Grid.Row="2">
             <Label
                 Style="{StaticResource TxtHeadline3_1}"
-                Text="{Binding Planets[0].Name_Planet}" />
+                Text="{Binding MyPlanet.Name_Planet}" />
 
             <Label
                 Style="{StaticResource TxtTitle1_1}"
-                Text="{Binding Planets[0].Short_Description_Planet}" />
+                Text="{Binding MyPlanet.Short_Description_Planet}" />
         </VerticalStackLayout>
 
         <CarouselView
             Grid.Row="3"
+            CurrentItemChangedCommand="{Binding SelectedPlanetCommand}"
+            CurrentItemChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=CurrentItem}"
             ItemsSource="{Binding Planets}">
 
             <CarouselView.ItemTemplate>
@@ -73,7 +76,7 @@
             HorizontalScrollBarVisibility="Never"
             Orientation="Horizontal">
             <HorizontalStackLayout
-                BindableLayout.ItemsSource="{Binding Planets[0].Features}"
+                BindableLayout.ItemsSource="{Binding MyFeatures}"
                 HeightRequest="60"
                 Spacing="16">
                 <BindableLayout.ItemTemplate>
